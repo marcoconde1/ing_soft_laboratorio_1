@@ -64,7 +64,8 @@ public class gui {
         System.out.println("***************************************************************");
         System.out.println("1. Ver Tareas Pendientes");
         System.out.println("2. Ver Tareas Completadas");
-        System.out.println("3. Volver al Menú Principal");
+        System.out.println("3. Borrar Tareas");
+        System.out.println("4. Volver al Menú Principal");
         System.out.print("\nIngrese su opción: ");
 
         Scanner sc = new Scanner(System.in);
@@ -73,8 +74,9 @@ public class gui {
         switch (opcion) {
             case 1 -> gui_tareasPendientes();
             case 2 -> gui_tareasCompletadas();
-            case 3 -> gui_principal();
-            default -> System.out.println("Opción no válida. Inténtelo de nuevo.");
+            case 3 -> gui_borrar();
+            case 4 -> gui_principal();
+            default -> gui_principal();
         }
     }
 
@@ -116,6 +118,45 @@ public class gui {
         gui_verTareas();
 
     }
+
+    public void gui_borrar() throws ParseException {
+        System.out.println("***************************************************************");
+        System.out.println("\t\tSIS-213");
+        System.out.println("\tAPLICACIÓN DE TAREAS");
+        System.out.println("***************************************************************");
+        System.out.println("BORRAR TAREAS\n");
+
+        lt.mostrar_tareas();
+
+        System.out.println("\nIngrese el id para borrar las tarea.");
+        System.out.println("Ingrese 0 para volver atras.");
+        System.out.print("\nIngrese su opción: ");
+
+        Scanner sc = new Scanner(System.in);
+        int opcion;
+        opcion = sc.nextInt();
+
+        while(opcion>=1){
+            lt.getTareas().remove(opcion-1);
+
+            System.out.println("\nLa tarea se completo con exito.\n");
+            System.out.println("***************************************************************");
+            System.out.println("\t\tSIS-213");
+            System.out.println("\tAPLICACIÓN DE TAREAS");
+            System.out.println("***************************************************************");
+            System.out.println("BORRAR TAREAS\n");
+
+            lt.mostrar_tareas();
+
+            System.out.println("\nIngrese el id para borrar las tarea.");
+            System.out.println("Ingrese 0 para volver atras.");
+            System.out.print("\nIngrese su opción: ");
+
+            opcion = sc.nextInt();
+        }
+        gui_verTareas();
+
+    }
     public void gui_tareasCompletadas() throws ParseException {
         System.out.println("***************************************************************");
         System.out.println("\t\tSIS-213");
@@ -132,6 +173,8 @@ public class gui {
         opcion = sc.nextInt();
         gui_verTareas();
     }
+
+
 
 
     }

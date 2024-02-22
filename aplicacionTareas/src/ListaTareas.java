@@ -22,6 +22,13 @@ public class ListaTareas {
     public int size(){
         return tareas.size();
     }
+
+    public void mostrar_tareas(){
+        for(Tareas i : tareas){
+            int id = i.getId()+1;
+            System.out.println(id+" "+i.getTarea()+" "+i.getDate());
+        }
+    }
     public void mostrar_tareas_completadas(){
         for(Tareas i : tareas){
             if(i.getCompletada()){
@@ -38,6 +45,9 @@ public class ListaTareas {
                 System.out.println(id+" "+i.getTarea()+" "+i.getDate());
             }
         }
+    }
+    public void eliminarTarea(int a){
+        tareas.remove(a);
     }
 
     @Override
